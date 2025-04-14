@@ -89,3 +89,73 @@ const checkWinner = (avgDolphins, avgKoalas) => {
 
 checkWinner(scoreDolphins1, scoreKoalas1);
 checkWinner(scoreDolphins2, scoreKoalas2);
+
+// Arrays
+// struttura base, più usata
+const friends = ["Valentina", "Alessia", "Gaia"];
+//altro modo
+const years = new Array(1991, 1984, 2008, 2020);
+// per vedere la lunghezza degli Array, possiamo usare console.log(friends.lenght)
+// ricorda che length indica l'ultimo numero di un array quindi con -1 ottengo quello prima
+//all'interno delle quadre js si aspetta un'espressione, non un'istruzione
+//metodi array:
+//push = inserire elementi a fine array
+//es:
+friends.push("Letizia"); //è teoricamente una funzione
+// unshift: aggiungere elementi all'inizio di un array
+friends.unshift("Baby");
+//tutti e due i metodi restituiscono una nuova lunghezza dell'array
+//pop: rimuove l'ultimo elemento
+friends.pop(); //non serve aggiungere altre indicazioni
+//questo se messo in una variabiloe e consollato non restituisce la lunghezza, ma l'elemento rimosso
+//shift: rimuove il primo
+friends.shift();
+//indexOf : ci da la posizione dell'elemento
+console.log(friends.indexOf("Alessia"));
+//in ES6 è stato inserito il metodo includes che ritornerà true se lò'elemento fa parte dell'array, e false il contrario
+console.log(friends.includes("Alessia"));
+//includes non fa coercizione quindi se inserisco qualcosa tipo un numero esattamente come numero
+//e con includes lo passo come stringa, dato che non c'è coercizione mi darà false
+// esercizio
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+const totals = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+console.log(tips, bills, totals);
+
+//Oggetti
+// gli oggetti hanno coppie chiave-valore
+//la differenza con gli array sta nel fatto che negli array l'ordine con cui scriviamo gli elementi è estremamente importante
+// metodi per recuperare le info da un oggetto:
+// dot notation = obj.name
+//brek notation = obj['name'] <-- come un array e la scriviamo come stringa
+
+const giulia = {
+  firstName: "Giulia",
+  lastName: "Gallo",
+  age: "28",
+  animals: ["cat", "dog"],
+};
+const interestedIn = prompt(
+  "what do you want to know? firstName, lastName, age or animals"
+);
+//console.log(giulia[interestedIn]);
+//per inserire una nuova proprietà uso  :
+giulia.location = "Padova";
+giulia["email"] = "@sahfs";
+
+if (giulia[interestedIn]) {
+  console.log(
+    "Giulia have 2 animals " +
+      giulia.animals +
+      " and she loves her " +
+      giulia.animals[0]
+  );
+}
+
+// oppure meglio
+console.log(
+  `${giulia.firstName} has ${giulia.animals.length} animals, and she loves her ${giulia.animals[0]}`
+);
