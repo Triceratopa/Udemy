@@ -130,7 +130,7 @@ console.log(tips, bills, totals);
 //la differenza con gli array sta nel fatto che negli array l'ordine con cui scriviamo gli elementi è estremamente importante
 // metodi per recuperare le info da un oggetto:
 // dot notation = obj.name
-//brek notation = obj['name'] <-- come un array e la scriviamo come stringa
+//bracket notation = obj['name'] <-- come un array e la scriviamo come stringa
 
 const giulia = {
   firstName: "Giulia",
@@ -159,3 +159,108 @@ if (giulia[interestedIn]) {
 console.log(
   `${giulia.firstName} has ${giulia.animals.length} animals, and she loves her ${giulia.animals[0]}`
 );
+
+//all'interno degli oggetti possiamo inserire anche le funzione es:
+// calcAge: function () {
+// return 2025 - this.age}
+//console.log (giulia.calcAge())
+//this indica l'oggetto che viene chiamato quindi:
+//all'interno dell'oggetto identifica in auto l'oggetto in questione
+//esercizio
+
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+
+const john = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+mark.calcBMI();
+john.calcBMI();
+
+if (mark.bmi < john.bmi) {
+  console.log(
+    `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`
+  );
+} else {
+  console.log(
+    `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})!`
+  );
+}
+
+//LOOP = autoatizzare cose da fare e rifare
+//for = nelle parentesi ci va l'istruzione
+// è un contatore con tre parti:
+// 1 : valore iniziale del contatore, una ripetizione
+// rappresenta una variabile iniziale
+// 2: è una condizione logica che viene valutata prima di ogni interazione del ciclo,
+//viene valutata prima di partire, quindi se è vera, si passa alla 3, appena diventa falsa il ciclo si interrompe
+//3: rappresenta quello che deve fare il contatore dopo ogni interazione, altrimenti rimarrebbe come la condizione iniziale per sempre
+//infine basterà scrivere nel for, il codice che vogliamo sia ripetuto per tot volte
+// per esempio se dobbiamo contare delle ripetizioni:
+for (let rep = 1; rep <= 10; rep++) {
+  //primo unto = valore di partenza, si usa let perchè il ciclo for poi la modificherà
+  // la nseconda parte ci dice la logica del ciclo, in questo caso che l'esercizio(il ciclo) starà tra 1 e 10 ripetizioni massimo
+  console.log(`repetition ${rep}`);
+} // ogni volta che viene fatta una ripetizione il ciclo controllerà
+// se la condizione è ancora vera (rep<=10), se è vera andrà avanti
+
+//altro esempio
+const year = [1997, 1993, 2010, 2002, 1980];
+const ages = [];
+for (let i = 0; i < year.length; i++) {
+  ages.push(2037 - year[i]);
+}
+console.log(ages);
+
+//esercizio loop + array
+const giuliaArray = [
+  "Giulia",
+  "Gallo",
+  2037 - 1997,
+  "student",
+  ["Alessia", "Valentina", "Gaia"],
+];
+
+//scrivere tutti gli elementi in console
+for (let i = 0; i < giuliaArray.length; i++) {
+  if (typeof giuliaArray[i] !== "string") continue; //sto dicendo che il ciclo mentre va deve considerare solo le non string e andare avanti
+  //se usiamo break invece gli stiamo dicendo che appena trova quello che gli indichiamo deve finire il ciclo e uscire dal loop
+  console.log(giuliaArray[i]);
+}
+
+//esistono anche break e continue che sono delle parole chiave (esempio sopra)
+
+//while
+//ammette una condizione e infatti il loop continuerà finchè la condizione sarà vera
+//il componente di partenza va dichiarato all'esterno del ciclo
+//l'ultimo componente va all'interno
+// il ciclo while è più versatile e l'unica istruzione davvero utile è la condizione
+let rep = 1;
+while (rep <= 10) {
+  console.log(`${rep}`);
+  rep++;
+}
+
+//altro esempio
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+  //diverso da zero poiè finchè non è zero deve continuare
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+}
