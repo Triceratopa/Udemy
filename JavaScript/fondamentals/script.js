@@ -260,7 +260,28 @@ while (rep <= 10) {
 let dice = Math.trunc(Math.random() * 6) + 1;
 
 while (dice !== 6) {
-  //diverso da zero poiè finchè non è zero deve continuare
+  //diverso da zero poiè finchè non è 6 deve continuare
   console.log(`You rolled a ${dice}`);
   dice = Math.trunc(Math.random() * 6) + 1;
 }
+
+//bug
+//ci sono altri tipi di console:
+//console.warn
+//console.error
+//permettono di generare errori in console
+//console.table, mi mostrerà una tabella in cui potrò vedere l'ogg
+// posso utilizzare la console di google: Sources-> script.js e run
+//in questo modo mi evidenzierà tutto
+
+//ex
+let data1 = [17, 21, 23];
+let data2 = [12, 5, -5, 0, 4];
+const printForecast = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    const day = i + 1;
+    console.log(`...${arr[i]}C in ${day} days`);
+  }
+};
+printForecast(data1);
+printForecast(data2);
